@@ -4,7 +4,7 @@ set -e
 # Copy the files from /config if present
 if [ -d /config ]; then
   echo "Copying /config to /root/.ssh"
-  cp -vr /config/* /root/.ssh
+  find /config -type f -exec cp -v --dereference {} /root/.ssh \;
 
   echo "Fixing .ssh permissions"
   chmod 700 /root/.ssh
